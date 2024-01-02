@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 """A type-annotated function to_str that takes a float n as argument"""
-import math
 
 
 def to_str(n: float) -> str:

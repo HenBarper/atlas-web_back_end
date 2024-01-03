@@ -2,15 +2,14 @@
 
 """"""
 import asyncio
-import random
+from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n: int, max_delay: int) -> float:
+async def wait_n(n: int, max_delay: int) -> List[float]:
     float_list = []
-    wait_time: float = 0
     for i in range(n):
-        wait_time = random.uniform(0, max_delay)
+        wait_time = wait_random(max_delay)
         await asyncio.sleep(wait_time)
         float_list.append(wait_time)
-    return float_list
+    return sorted(float_list)

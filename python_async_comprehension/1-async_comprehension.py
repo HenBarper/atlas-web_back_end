@@ -15,5 +15,5 @@ async def async_comprehension() -> typing.List[float]:
     then return the 10 random numbers."""
     rand_nums = []
     for i in range(10):
-        rand_nums.append(random.uniform(0, 10))
+        rand_nums.append(random.random())
     return rand_nums

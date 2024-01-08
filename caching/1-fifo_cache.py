@@ -13,13 +13,12 @@ class FIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Put function of basic cache"""
-        if key is None or item is None:
-            pass
-        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-            discarded_key = next(iter(self.cache_data))
-            print(f"DISCARD: {discarded_key}")
-            del self.cache_data[discarded_key]
-        self.cache_data[key] = item
+        if key is not None or item is not None:
+            if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
+                discarded_key = next(iter(self.cache_data))
+                print(f"DISCARD: {discarded_key}")
+                del self.cache_data[discarded_key]
+            self.cache_data[key] = item
 
     def get(self, key):
         """Get function of basic cache"""

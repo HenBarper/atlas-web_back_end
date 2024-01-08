@@ -1,12 +1,14 @@
 #!/usr/bin/python3
-""""""
+"""Create a class FIFOCache that
+inherits from BaseCaching and
+is a caching system:"""
 BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """"""
+    """Fifo cache class"""
     def __init__(self):
-        """"""
+        """Fifo cache init method"""
         super().__init__()
 
     def put(self, key, item):

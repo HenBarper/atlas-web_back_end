@@ -15,7 +15,7 @@ class FIFOCache(BaseCaching):
         """Put function of basic cache"""
         if key is None or item is None:
             pass
-        elif len(self.cache_data) > BaseCaching.MAX_ITEMS:
+        elif len(self.cache_data) >= BaseCaching.MAX_ITEMS:
             discarded_key = next(iter(self.cache_data))
             print(f"DISCARD: {discarded_key}")
             del self.cache_data[discarded_key]

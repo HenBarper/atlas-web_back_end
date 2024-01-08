@@ -17,7 +17,7 @@ class BasicCache(BaseCaching):
 
     def get(self, key):
         """Get function of basic cache"""
-        if key is not None:
+        if key is not None and key in self.cache_data:
             return self.cache_data[key]
         else:
             return None

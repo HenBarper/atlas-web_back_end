@@ -19,6 +19,8 @@ class FIFOCache(BaseCaching):
                 print(f"DISCARD: {discarded_key}")
                 del self.cache_data[discarded_key]
             self.cache_data[key] = item
+        else:
+            pass
 
     def get(self, key):
         """Get function of basic cache"""

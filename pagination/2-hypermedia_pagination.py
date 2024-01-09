@@ -67,11 +67,11 @@ class Server:
         else:
             next_page = page + 1
 
-        if page - 1 >= 0:
+        if page - 1 <= 0:
             prev_page = None
         else:
             prev_page = page - 1
-        
+
         hyper_dict = {
             'page_size': page_size,
             'page': page,

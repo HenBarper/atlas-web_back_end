@@ -30,7 +30,6 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         pass
 
-
     def index_range(self, page: int, page_size: int):
         """The function should return a tuple
         of size two containing a start index
@@ -40,14 +39,13 @@ class Server:
         index_tuple = (((page * page_size) - page_size), page * page_size)
         return index_tuple
 
-
     def get_page(self, page: int = 1, page_size: int = 10):
         """Use index_range to find the correct indexes
         to paginate the dataset correctly and return
         the appropriate page of the dataset (i.e. the
         correct list of rows)."""
-        assert isinstance(page, int) and page > 0, "Page must be a positive integer"
-        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer"
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
         start_index, end_index = self.index_range(page, page_size)
         dataset = self.dataset()

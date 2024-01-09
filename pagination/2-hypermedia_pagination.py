@@ -60,12 +60,24 @@ class Server:
         same arguments (and defaults) as get_page and
         returns a dictionary containing the following
         key-value pairs:"""
+        dataset = self.dataset()
+
+        if page + 1 >= len(dataset):
+            next_page = None
+        else:
+            next_page = page + 1
+
+        if page - 1 >= 0:
+            prev_page = None
+        else:
+            prev_page = page - 1
+        
         hyper_dict = {
             'page_size': page_size,
             'page': page,
             'data': self.get_page(page, page_size),
-            'next_page': page + 1,
-            'prev_page': page - 1,
+            'next_page': next_page,
+            'prev_page': prev_page,
             'total_pages': page_size * page
         }
         return hyper_dict

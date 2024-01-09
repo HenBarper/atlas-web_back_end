@@ -15,7 +15,7 @@ class MRUCache(BaseCaching):
         """Put function of basic cache"""
         if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                discarded_key = next(iter(self.cache_data))
+                discarded_key = max(self.cache_data, key=self.cache_data.get)
                 print(f"DISCARD: {discarded_key}")
                 del self.cache_data[discarded_key]
             self.cache_data[key] = item

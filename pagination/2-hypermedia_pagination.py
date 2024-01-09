@@ -62,7 +62,7 @@ class Server:
         key-value pairs:"""
         dataset = self.dataset()
 
-        if page + 1 >= len(dataset):
+        if page + 1 > len(dataset):
             next_page = None
         else:
             next_page = page + 1

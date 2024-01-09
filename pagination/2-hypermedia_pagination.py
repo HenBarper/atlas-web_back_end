@@ -60,8 +60,7 @@ class Server:
         same arguments (and defaults) as get_page and
         returns a dictionary containing the following
         key-value pairs:"""
-        dataset = self.dataset()
-        total_pages = page_size * page
+        total_pages = len(self.dataset())
 
         if page + 1 > total_pages:
             next_page = None

@@ -61,8 +61,9 @@ class Server:
         returns a dictionary containing the following
         key-value pairs:"""
         dataset = self.dataset()
+        total_pages = page_size * page
 
-        if page + 1 > len(dataset):
+        if page + 1 > total_pages:
             next_page = None
         else:
             next_page = page + 1
@@ -78,6 +79,6 @@ class Server:
             'data': self.get_page(page, page_size),
             'next_page': next_page,
             'prev_page': prev_page,
-            'total_pages': page_size * page
+            'total_pages': total_pages
         }
         return hyper_dict

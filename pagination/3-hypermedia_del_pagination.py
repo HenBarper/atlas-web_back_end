@@ -41,13 +41,17 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """The method should return a dictionary with key-value pairs"""
-        dataset = self.dataset()
+        assert index is None or 0 <= index < len(self.__indexed_dataset)
 
-        hyper_dict = {
-            'index': index,
-            'next_index': next(iter(dataset)),
-            'page_size': page_size,
-            'data': index * page_size
+        data_set = []
+        next_index = index + page_size
+        for i in range(index, next_index):
+            if i in self.__indexed_dataset:
+                data_set.append(self.__indexed_dataset[i])
+
+        return {
+            "index": index,
+            "data": data_set,
+            "page_size": page_size,
+            "next_index": next_index
         }
-        return hyper_dict

@@ -42,4 +42,12 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """The method should return a dictionary with key-value pairs"""
-        pass
+        dataset = self.dataset()
+
+        hyper_dict = {
+            'index': index,
+            'next_index': next(iter(dataset)),
+            'page_size': page_size,
+            'data': index * page_size
+        }
+        return hyper_dict

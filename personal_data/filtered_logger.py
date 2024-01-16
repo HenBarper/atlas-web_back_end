@@ -5,6 +5,8 @@ import re
 import typing
 import logging
 
+PII_FIELDS: tuple = ("name", "email", "phone", "ssn", "password")
+
 
 def filter_datum(fields: typing.List[str], redaction: str,
                  message: str, separator: str) -> str:
@@ -34,3 +36,14 @@ class RedactingFormatter(logging.Formatter):
         record.msg = filter_datum(self.fields, self.REDACTION,
                                   record.msg, self.SEPARATOR)
         return super(RedactingFormatter, self).format(record)
+
+def get_logger() -> logging.Logger:
+    """Get logger method for redacting formatter"""
+    user_data = logging.Logger
+    user_data.setLevel(logging.INFO)
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(RedactingFormatter(fields=PII_FIELDS))
+    user_data.addHandler(stream_handler)
+    user_data.propagate = False
+
+    return user_data

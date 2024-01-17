@@ -4,18 +4,11 @@ that returns the log message obfuscated"""
 import re
 import typing
 import logging
+import os
+import mysql.connector
+
 
 PII_FIELDS: tuple = ("name", "email", "phone", "ssn", "password")
-
-
-def filter_datum(fields: typing.List[str], redaction: str,
-                 message: str, separator: str) -> str:
-    """The function should use a regex to replace
-    occurrences of certain field values"""
-    for field in fields:
-        pattern = r'({})([^{}]+)'.format(field + '=', separator)
-        message = re.sub(pattern, r"\1{}".format(redaction), message)
-    return message
 
 
 class RedactingFormatter(logging.Formatter):
@@ -38,8 +31,18 @@ class RedactingFormatter(logging.Formatter):
         return super(RedactingFormatter, self).format(record)
 
 
+def filter_datum(fields: typing.List[str], redaction: str,
+                 message: str, separator: str) -> str:
+    """The function should use a regex to replace
+    occurrences of certain field values"""
+    for field in fields:
+        pattern = r'({})([^{}]+)'.format(field + '=', separator)
+        message = re.sub(pattern, r"\1{}".format(redaction), message)
+    return message
+
+
 def get_logger() -> logging.Logger:
-    """Get logger method for redacting formatter"""
+    """Get logger method for the filtered logger"""
     user_data = logging.getLogger("user_data")
     user_data.setLevel(logging.INFO)
     stream_handler = logging.StreamHandler()
@@ -48,3 +51,13 @@ def get_logger() -> logging.Logger:
     user_data.propagate = False
 
     return user_data
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """Return a connector to the secure database"""
+    return mysql.connector.connect(
+        user=os.getenv('PERSONAL_DATA_DB_USERNAME', 'root'),
+        password=os.getenv("PERSONAL_DATA_DB_PASSWORD", ""),
+        host=os.getenv("PERSONAL_DATA_DB_HOST", "localhost"),
+        database=os.getenv("PERSONAL_DATA_DB_NAME", "")
+    )

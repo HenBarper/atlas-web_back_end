@@ -39,6 +39,23 @@ def unauthorized(error) -> str:
     return jsonify({"error": "Unauthorized"}), 401
 
 
+@app.before_request
+def before_request():
+    """pre-request handler"""
+    if auth is None:
+        return
+    if request.path not in [
+        '/api/v1/status/',
+        '/api/v1/unauthorized/',
+        '/api/v1/forbidden/'
+        ]:
+        return
+    if auth.authorization_header(request) is None:
+        abort(401)
+    if auth.current_user(request) is None:
+        abort(403)
+
+
 if __name__ == "__main__":
     """main function"""
     host = getenv("API_HOST", "0.0.0.0")

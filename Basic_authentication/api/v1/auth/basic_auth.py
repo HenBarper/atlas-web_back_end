@@ -53,3 +53,9 @@ class BasicAuth(Auth):
         on his email and password"""
         if user_email is None or user_pwd is None:
             return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """overloads Auth and retrieves
+        the User instance for a request"""
+        if request is None:
+            return None

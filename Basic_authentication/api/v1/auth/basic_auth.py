@@ -3,6 +3,7 @@
 from api.v1.auth.auth import Auth
 import base64
 from typing import TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -53,6 +54,15 @@ class BasicAuth(Auth):
         on his email and password"""
         if user_email is None or user_pwd is None:
             return None
+        if not isinstance(user_email, str) or not isinstance(user_pwd, str):
+            return None
+        users = User.search({'email': user_email})
+        if not users:
+            return None
+        for user in users:
+            if user.is_valid_password(user_pwd):
+                return user
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
         """overloads Auth and retrieves

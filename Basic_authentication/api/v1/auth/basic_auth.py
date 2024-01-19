@@ -70,3 +70,10 @@ class BasicAuth(Auth):
         the User instance for a request"""
         if request is None:
             return None
+        authorized_header = self.authorization_header(request)
+        b64_head = self.extract_base64_authorization_header(authorized_header)
+        dc_head = self.decode_base64_authorization_header(b64_head)
+        user_email, user_pwd = self.extract_user_credentials(dc_head)
+        user = self.user_object_from_credentials(user_email, user_pwd)
+
+        return user

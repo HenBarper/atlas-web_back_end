@@ -7,7 +7,7 @@ from models.user import User
 
 
 class BasicAuth(Auth):
-    """Empty Basic auth class"""
+    """Basic auth class"""
     def extract_base64_authorization_header(self,
                                             authorization_header: str) -> str:
         """returns the Base64 part of the Authorization

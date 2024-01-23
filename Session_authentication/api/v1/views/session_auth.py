@@ -12,7 +12,7 @@ def login():
     email = request.form.get('email')
     if not email:
         return jsonify({"error": "email missing"}, 400)
-    pwd = request.form.get(request.password)
+    pwd = request.form.get('password')
     if not pwd:
         return jsonify({"error": "password missing"}, 400)
     user = User()

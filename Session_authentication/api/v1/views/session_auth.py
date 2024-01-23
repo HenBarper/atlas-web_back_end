@@ -17,16 +17,16 @@ def login():
     if not pwd:
         return jsonify({"error": "password missing"}, 400)
 
-    user = User()
-    user_email = user.search({'email': email})
-    if not user_email:
+    users = User.search({'email': email})
+    if not users:
         return jsonify({"error": "no user found for this email"}, 404)
+    user = users[0]
     if not user.is_valid_password(pwd):
         return jsonify({"error": "wrong password"}, 401)
 
     from api.v1.app import auth
     session_id = auth.create_session(user.id)
-    dictionary = user_email.to_json()
+    dictionary = user.to_json()
 
     response = jsonify(dictionary)
     response.set_cookie(os.getenv('SESSION_NAME'), session_id)

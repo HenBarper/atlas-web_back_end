@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Create a new Flask view that handles
 all routes for the Session authentication"""
-from api.v1.views import app_views
 from flask import request, jsonify
+from api.v1.views import app_views
 from models.user import User
+import os
 
 
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
@@ -26,6 +27,6 @@ def login():
     session_id = auth.create_session(user.id)
 
     response = jsonify(user.to_json())
-    response.set_cookie(auth.session_cookie_name, session_id)
+    response.set_cookie(os.getenv('SESSION_NAME'), session_id)
 
     return response

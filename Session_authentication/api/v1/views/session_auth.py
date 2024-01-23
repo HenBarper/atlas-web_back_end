@@ -6,8 +6,8 @@ from flask import request, jsonify
 from models.user import User
 
 
-@app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
-def login():
+@app_views.route('/auth_session/login/', methods=['POST'], strict_slashes=False)
+def login_method():
     """Method to login"""
     pass
     # email = request.form.get(request.email)

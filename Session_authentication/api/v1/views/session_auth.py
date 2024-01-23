@@ -9,7 +9,7 @@ from models.user import User
 @app_views.route('/auth_session/login', methods=['POST'], strict_slashes=False)
 def login():
     """Method to login"""
-    email = request.form.get(email)
+    email = request.form.get('email')
     if not email:
         return jsonify({"error": "email missing"}, 400)
     pwd = request.form.get(request.password)

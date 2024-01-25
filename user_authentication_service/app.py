@@ -14,7 +14,7 @@ def get_jsonify() -> dict:
 
 
 @app.route('/users', methods=['POST'], strict_slashes=False)
-def users():
+def users() -> dict:
     """"""
     email = request.form.get('email')
     password = request.form.get('password')

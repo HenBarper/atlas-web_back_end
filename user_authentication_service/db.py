@@ -39,7 +39,7 @@ class DB:
         self._session.commit()
         return user_to_add
 
-    def find_user_by(self, **keywords):
+    def find_user_by(self, **keywords: str) -> User:
         """takes in arbitrary keyword arguments and returns
         the first row found in the users table as filtered
         by the method’s input arguments

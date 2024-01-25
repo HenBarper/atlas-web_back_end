@@ -40,15 +40,16 @@ class DB:
         self._session.commit()
         return user_to_add
 
-    def find_user_by(self, **kwargs) -> User:
+    def find_user_by(self, **keywords) -> User:
         """takes in arbitrary keyword arguments and returns
         the first row found in the users table as filtered
         by the method’s input arguments
         """
         try:
-            user = self.__session.query(User).filter_by(**kwargs).first()
-            if not user:
-                raise NoResultFound
+            user = self.__session.query(User).filter_by(**keywords).first()
+            if user is None:
+                raise NoResultFound("Not found")
             return user
-        except InvalidRequestError:
-            raise
+        except InvalidRequestError as error:
+            self._session.rollback()
+            raise InvalidRequestError("Invalid") from error

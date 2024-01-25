@@ -8,8 +8,9 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'], strict_slashes=False)
-def get_jsnofiy():
-    return jsonify(request.data)
+def get_jsonify():
+    """return a json payload"""
+    return jsonify({"message": "Bienvenue"})
 
 
 # @app.route('/users', methods=['POST'], strict_slashes=False)

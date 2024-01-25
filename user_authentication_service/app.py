@@ -24,8 +24,6 @@ def users():
         return jsonify({"email": email, "message": "user created"}), 200
     except ValueError:
         return jsonify({"message": "email already registered"}), 400
-    except Exception as e:
-        return jsonify({"message": "Error occurred: {}".format(str(e))}), 500
 
 
 if __name__ == "__main__":

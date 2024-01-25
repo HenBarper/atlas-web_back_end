@@ -3,7 +3,6 @@
 import bcrypt
 from db import DB
 from user import User
-from sqlalchemy.exc import ValueError
 
 
 class Auth:

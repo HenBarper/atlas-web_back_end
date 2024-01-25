@@ -48,8 +48,7 @@ class DB:
         try:
             user = self.__session.query(User).filter_by(**keywords).first()
             if user is None:
-                raise NoResultFound("Not found")
+                raise NoResultFound
             return user
-        except InvalidRequestError as error:
-            self._session.rollback()
-            raise InvalidRequestError("Invalid") from error
+        except InvalidRequestError:
+            raise

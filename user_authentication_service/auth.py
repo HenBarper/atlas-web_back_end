@@ -25,3 +25,8 @@ class Auth:
         """takes in a password string arguments and returns bytes"""
         hash_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
         return hash_pass
+
+def _hash_password(self, password: str) -> bytes:
+        """takes in a password string arguments and returns bytes"""
+        hash_pass = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
+        return hash_pass

@@ -17,14 +17,14 @@ class TestAccessNestedMap(unittest.TestCase):
         self.assertEqual(access_nested_map(nested_map, path), expected_output)
 
     @parameterized.expand([
-        ({}, ("a",), "Key a not found"),
-        ({"a": 1}, ("a", "b"), "Key b not found"),
+        ({}, ("a",)),
+        ({"a": 1}, ("a", "b")),
     ])
-    def test_access_nested_map_exception(self, nested_map, path, expected_message):
+    def test_access_nested_map_exception(self, nested_map, path):
         """testing test_access_nested_map() for exceptions"""
         with self.assertRaises(KeyError) as message:
             access_nested_map(nested_map, path)
-        self.assertEqual((message.exception), expected_message)
+        self.assertEqual(str(message.exception), path[-1])
 
 
 if __name__ == '__main__':

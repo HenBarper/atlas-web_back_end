@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Test file for client.py"""
 import unittest
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 from unittest.mock import patch, Mock, PropertyMock
+import fixtures
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -48,6 +49,17 @@ class TestGithubOrgClient(unittest.TestCase):
         """testing for has_licence()"""
         pass
 
+@parameterized_class([
+    fixtures.TEST_PAYLOAD
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Client testing class for github org client"""
+    def setUpClass(self):
+        """set up class"""
+        pass
+    def tearDownClass(self):
+        """teardown class"""
+        pass
 
 if __name__ == '__main__':
     unittest.main()

@@ -40,6 +40,10 @@ class TestGithubOrgClient(unittest.TestCase):
         """testing for public_repos()"""
         pass
 
+    def test_has_license(self):
+        """testing for has_licence()"""
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

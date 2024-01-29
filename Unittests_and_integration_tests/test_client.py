@@ -33,6 +33,10 @@ class TestGithubOrgClient(unittest.TestCase):
             myclass = GithubOrgClient('organization')
             self.assertEqual(myclass._public_repos_url, "https://testing.com")
 
+    def test_public_repos(self):
+        """testing for public_repos()"""
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

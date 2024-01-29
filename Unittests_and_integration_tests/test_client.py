@@ -54,9 +54,13 @@ class TestGithubOrgClient(unittest.TestCase):
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Client testing class for github org client"""
+
+    @classmethod
     def setUpClass(self):
         """set up class"""
         pass
+
+    @classmethod
     def tearDownClass(self):
         """teardown class"""
         pass

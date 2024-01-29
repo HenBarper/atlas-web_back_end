@@ -40,6 +40,10 @@ class TestGithubOrgClient(unittest.TestCase):
         """testing for public_repos()"""
         pass
 
+    @parameterized.expand([
+        ({"license": {"key": "my_license"}}, "my_license"),
+        ({"license": {"key": "other_license"}}, "my_license")
+    ])
     def test_has_license(self):
         """testing for has_licence()"""
         pass

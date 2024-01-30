@@ -11,10 +11,11 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-@Babel.localeselector
+@babel.localeselector
 def get_locale():
     """function to get user locale"""
     return request.accept_languages.best_match(['en', 'fr'])
+
 
 app = Flask(__name__)
 app.config.from_object(Config)

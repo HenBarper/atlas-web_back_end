@@ -14,7 +14,7 @@ class Config:
 @babel.localeselector
 def get_locale():
     """function to get user locale"""
-    return request.accept_languages.best_match(['en', 'fr'])
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 app = Flask(__name__)

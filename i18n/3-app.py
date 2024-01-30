@@ -23,11 +23,14 @@ def get_locale():
     """function to get user locale"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
+def gettext():
+    """get text function"""
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 @app.route('/')
 def index():
     """initial route to index"""
-    from flask_babel import gettext as _
+    # from flask_babel import gettext as _
     return render_template('3-index.html')
 
 

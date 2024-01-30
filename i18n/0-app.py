@@ -8,6 +8,6 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     """initial route to index"""
-    return render_template('index.html')
+    return render_template('0-index.html')
 
 app.run(port=5000)

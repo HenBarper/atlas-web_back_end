@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """4-app.y file"""
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
+
+users = {
+    1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
+    2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
+    3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
+    4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
+}
 
 
 class Config:
@@ -22,6 +29,26 @@ def get_locale():
     force_locale = request.args.get('locale')
     if force_locale and force_locale in app.config['LANGUAGES']:
         return force_locale
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+def get_user():
+    """Get user function"""
+    user_id = int(request.args.get('login_as'))
+    if user_id in users:
+        return user_id
+    else:
+        return None
+
+
+@app.before_request
+def before_request():
+    """Before request function"""
+    g.user = get_user()
+
+
+def gettext():
+    """get text function"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 

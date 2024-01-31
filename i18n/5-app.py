@@ -47,11 +47,6 @@ def before_request():
     g.user = get_user()
 
 
-def gettext():
-    """get text function"""
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
 @app.route('/')
 def index():
     """initial route to index"""

@@ -37,12 +37,12 @@ class Cache:
         else:
             return data
 
-    def get_str(self, to_decode: str) -> str:
+    def get_str(self, key: str) -> str:
         """get string method"""
-        decoded_string = to_decode.decode("utf-8")
-        return decoded_string
+        value = self.get(key, str)
+        return value
 
-    def get_int(self, to_decode: str) -> int:
+    def get_int(self, key: str) -> int:
         """get int method"""
-        int_val = int.from_bytes(to_decode, "big")
-        return int_val
+        value = self.get(key, int)
+        return value

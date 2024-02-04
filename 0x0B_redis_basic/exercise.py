@@ -17,12 +17,12 @@ from typing import Union, Callable
 from functools import wraps
 
 
-def count_calls(meth: Callable) -> Callable:
+def count_calls(method: Callable) -> Callable:
     """takes a single method Callable argument and returns a Callable"""
-    @wraps(meth)
+    @wraps(method)
     def wrapper(self, *args, **kwargs):
-        self._redis.incr(meth.__qualname__)
-        return meth(self, *args, **kwargs)
+        self._redis.incr(method.__qualname__)
+        return method(self, *args, **kwargs)
     return wrapper
 
 

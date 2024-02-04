@@ -13,7 +13,17 @@ Type-annotate store correctly. Remember that data
 can be a str, bytes, int or float."""
 import redis
 import uuid
-from typing import Union, Callable, Optional
+from typing import Union, Callable
+from functools import wraps
+
+
+def count_calls(meth: Callable) -> Callable:
+    """takes a single method Callable argument and returns a Callable"""
+    @wraps(meth)
+    def wrapper(self, *args, **kwargs):
+        self._redis.incr(meth.__qualname__)
+        return meth(self, *args, **kwargs)
+    return wrapper
 
 
 class Cache:
@@ -23,6 +33,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """takes a data argument and returns a string"""
         key = str(uuid.uuid4)

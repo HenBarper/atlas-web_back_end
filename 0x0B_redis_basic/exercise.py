@@ -72,3 +72,17 @@ class Cache:
         """get int method"""
         value = self.get(key, int)
         return value
+
+
+def replay(method: Callable) -> None:
+    """display the history of calls of a particular function"""
+    inputs_key = f"{method.__qualname__}:inputs"
+    outputs_key = f"{method.__qualname__}:outputs"
+    inputs = method.__self__._redis.lrange(inputs_key, 0, -1)
+    outputs = method.__self__._redis.lrange(outputs_key, 0, -1)
+    calls = zip(inputs, outputs)
+    print(f"{method.__qualname__} was called {len(inputs)} times:")
+    for input_data, output_data in calls:
+        input_str = input_data.decode('utf-8')
+        output_str = input_data.decode('utf-8')
+        print(f"{method.__qualname__}(*{input_str}) -> {output_str}")

@@ -28,7 +28,7 @@ def count_calls(method: Callable) -> Callable:
 
 def call_history(method: Callable) -> Callable:
     """store the history of inputs and outputs for a particular function"""
-    @wraps
+    @wraps(method)
     def wrapper(self, *args):
         inputs_key = f"{method.__qualname__}:inputs"
         outputs_key = f"{method.__qualname__}:outputs"

@@ -1,0 +1,2 @@
+-- Write a SQL script that ranks country origins of bands
+-- Ordered by the number of (non-unique) fans

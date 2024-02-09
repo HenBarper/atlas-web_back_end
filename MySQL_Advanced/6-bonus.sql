@@ -16,7 +16,11 @@ BEGIN
         SET project_id = LAST_INSERT_ID();
     END IF;
 
-    INSERT INTO corrections (user_id, project_id, score) VALUES (user_id, project_id, score);
+    IF EXISTS(SELECT 1 FROM corrections WHERE user_id = user_id AND project_id = project_id) THEN
+        UPDATE corrections SET score = score + score WHERE user_id = user_id AND project_id = project_id;
+    ELSE
+        INSERT INTO corrections (user_id, project_id, score) VALUES (user_id, project_id, score);
+    END IF;
 END;
 //
 

@@ -5,19 +5,11 @@
 DELIMITER //
 CREATE PROCEDURE ComputeAverageScoreForUser(IN user_id INT)
 BEGIN
-    DECLARE total_score FLOAT;
-    DECLARE num_corrections INT;
-    DECLARE avg_score FLOAT;
+    DECLARE average FLOAT;
 
-    SELECT SUM(score) INTO total_score FROM corrections WHERE user_id = user_id;
-    SELECT COUNT(*) INTO num_corrections FROM corrections WHERE user_id = user_id;
-    IF num_corrections > 0 THEN
-        SET avg_score = total_score / num_corrections;
-    ELSE
-        SET avg_score = 0;
-    END IF;
+    SELECT AVG(score) INTO average FROM corrections WHERE corrections.user_id = user_id;
 
-    UPDATE users SET average_score = avg_score WHERE id = user_id;
+    UPDATE users SET average = average WHERE id = user_id;
 END;
 //
 

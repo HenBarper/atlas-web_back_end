@@ -3,15 +3,12 @@
 -- the second number is equal to 0.
 DELIMITER //
 CREATE FUNCTION SafeDiv
-RETURNS INT
+RETURNS FLOAT
 BEGIN
-    DECLARE result INT;
-
-    IF b = 0
-        SET result = 0;
-    ELSE
-        SET result = a / b;
+    IF b = 0 THEN
+        RETURN 0;
     END IF;
+    RETURN a / b;
 END;
 //
 

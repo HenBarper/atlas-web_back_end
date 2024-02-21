@@ -1,4 +1,4 @@
-// Comment to test file 2
+// Changing comment to test
 
 function displayMessage (string) {
   console.log(string)

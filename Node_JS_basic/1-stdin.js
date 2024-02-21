@@ -1,12 +1,15 @@
-console.log('Welcome to Holberton School, what is your name?');
+// Prompts user to input their name
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
+// reads user input and displays it if not null
 process.stdin.on('readable', () => {
-  const name = process.stdin.read();
-  if (name) {
-    process.stdout.write(`Your name is: ${name}`);
+  const chunk = process.stdin.read();
+  if (chunk !== null) {
+    process.stdout.write(`Your name is: ${chunk}`);
   }
 });
 
+// Closes the program and displays a cheeky message
 process.stdin.on('end', () => {
   process.stdout.write('This important software is now closing\n');
 });

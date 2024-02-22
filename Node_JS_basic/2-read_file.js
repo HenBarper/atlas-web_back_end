@@ -4,7 +4,7 @@ const path = require('path');
 function countStudents(pathArg) {
   fs.readFile(path.join(__dirname, pathArg), 'utf8', (err, data) => {
     if (err) {
-      console.error('Cannot load the database');
+      throw new Error('Cannot load the database');
     } else {
       const lines = data.split('\n').filter((line) => line.trim() !== '');
       console.log(`Number of students: ${lines.slice(1).length}`);

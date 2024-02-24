@@ -1,0 +1,14 @@
+{
+  "name": "unittests_in_js",
+  "version": "1.0.0",
+  "description": "unittest js read me",
+  "main": "0-calcul.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js"
+  },
+  "author": "Ben Harper",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^10.3.0"
+  }
+}

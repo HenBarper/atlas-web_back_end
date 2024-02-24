@@ -2,10 +2,9 @@
   "name": "unittests_in_js",
   "version": "1.0.0",
   "description": "unittest js read me",
-  "main": "0-calcul.js",
+  "main": "index.js",
   "scripts": {
-    "test": "mocha test.js",
-    "dev": "nodemon --exec babel-node --presets @babel/preset-env"
+    "test": "./node_modules/mocha/bin/mocha",
   },
   "author": "Ben Harper",
   "license": "ISC",

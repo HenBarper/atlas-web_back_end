@@ -23,7 +23,7 @@ async function countStudents(pathArg) {
     }
 
     returnString += `Number of students in CS: ${csStudents.length}. List: ${csStudents.join(', ')}\n`;
-    returnString += `Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}\n`;
+    returnString += `Number of students in SWE: ${sweStudents.length}. List: ${sweStudents.join(', ')}`;
     return (returnString);
   } catch (error) {
     throw new Error('Cannot load the database');
@@ -38,7 +38,7 @@ const app = http.createServer(async (req, res) => {
   if (req.url === '/students') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
     const theData = await countStudents(process.argv[2]);
-    res.write(theData);
+    res.end(`${theData}`);
   }
 });
 

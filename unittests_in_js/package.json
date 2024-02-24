@@ -4,7 +4,8 @@
   "description": "unittest js read me",
   "main": "0-calcul.js",
   "scripts": {
-    "test": "mocha test/**/*.test.js"
+    "test": "mocha test.js",
+    "dev": "nodemon --exec babel-node --presets @babel/preset-env"
   },
   "author": "Ben Harper",
   "license": "ISC",

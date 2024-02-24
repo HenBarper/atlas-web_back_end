@@ -7,7 +7,7 @@ async function countStudents(pathArg) {
   try {
     const data = await fs.readFile(pathArg, 'utf8');
     const lines = data.split('\n').filter((line) => line.trim() !== '');
-    returnString = 'This is the list of our students\n';
+    let returnString = 'This is the list of our students\n';
     returnString += `Number of students: ${lines.slice(1).length}\n`;
 
     const csStudents = [];

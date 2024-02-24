@@ -4,11 +4,14 @@
   "description": "unittest js read me",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha",
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "author": "Ben Harper",
   "license": "ISC",
   "devDependencies": {
     "mocha": "^10.3.0"
+  },
+  "dependencies": {
+    "eslint": "^8.57.0"
   }
 }

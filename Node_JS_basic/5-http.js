@@ -8,6 +8,7 @@ const app = http.createServer((req, res) => {
   }
   if (req.url === '/students') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
+    console.log("This is the list of our students");
     countStudents(process.argv[2]);
     // console.log(process.argv[2]);
   }

@@ -1,7 +1,8 @@
 const calculateNumber = require('./1-calcul');
 const assert = require('assert');
 
-describe('SUM', () => {
+
+describe('SUM', function() {
   it('should return rounded sum for SUM', function() {
     assert.strictEqual(calculateNumber('SUM', 6.2, 11.8), 18);
   });
@@ -24,7 +25,7 @@ describe('SUM', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 56.9, 0), 'Error');
   });
 });
-describe('SUBTRACT', () => {
+describe('SUBTRACT', function() {
   it('should return rounded difference for SUBTRACT', function() {
     assert.strictEqual(calculateNumber('SUBTRACT', 15.8, 6.2), 10);
   });
@@ -32,7 +33,7 @@ describe('SUBTRACT', () => {
     assert.strictEqual(calculateNumber('SUBTRACT', 5.1, -7.9), -3);
   });
 });
-describe('DIVIDE', () => {
+describe('DIVIDE', function() {
   it('should return rounded division for DIVIDE', function() {
     assert.strictEqual(calculateNumber('DIVIDE', 9.3, 2.7), 3);
   });

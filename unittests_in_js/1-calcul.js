@@ -1,5 +1,3 @@
-// Task 1 - Upgrade the function from 0-calcul.js
-
 function calculateNumber(type, a, b) {
   if (type === 'SUM') {
     return Math.round(a) + Math.round(b);

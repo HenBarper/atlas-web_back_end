@@ -10,15 +10,15 @@ describe('calculateNumber', function() {
   });
   describe('SUBTRACT', function() {
     it('should return rounded difference for SUBTRACT', function() {
-        expect(calculateNumber('SUBTRACT', 15.8, 6.2)).to.equal(10);
+      expect(calculateNumber('SUBTRACT', 15.8, 6.2)).to.equal(10);
     });
   });
   describe('DIVIDE', function() {
     it('should return rounded division for DIVIDE', function() {
-        expect(calculateNumber('DIVIDE', 9.3, 2.7)).to.equal(3);
+      expect(calculateNumber('DIVIDE', 9.3, 2.7)).to.equal(3);
     });
     it('should return Error for DIVIDE when b is 0', function() {
-        expect(calculateNumber('DIVIDE', 56.9, 0)).to.equal('Error');
+      expect(calculateNumber('DIVIDE', 56.9, 0)).to.equal('Error');
     });
   });
 });

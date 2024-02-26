@@ -1,11 +1,11 @@
-// Task 1 - Upgrade the function from 0-calcul.js
-
 function calculateNumber(type, a, b) {
   if (type === 'SUM') {
     return Math.round(a) + Math.round(b);
-  } else if (type === 'SUBTRACT') {
-    return Math.round(a) - Math.round(b);
-  } else if (type === 'DIVIDE') {
+  }
+  if (type === 'SUBTRACT') {
+    return Math.round(b) - Math.round(a);
+  }
+  if (type === 'DIVIDE') {
     if (Math.round(b) === 0) {
       return 'Error';
     }

@@ -2,18 +2,18 @@ const calculateNumber = require('./2-calcul');
 const expect = require('chai').expect;
 
 
-describe('calculateNumber', () => {
-  describe('SUM', () => {
+describe('calculateNumber', function() {
+  describe('SUM', function() {
     it('should return rounded sum for SUM', function() {
       expect(calculateNumber('SUM', 6.2, 11.8)).to.equal(18);
     });
   });
-  describe('SUBTRACT', () => {
+  describe('SUBTRACT', function() {
     it('should return rounded difference for SUBTRACT', function() {
         expect(calculateNumber('SUBTRACT', 15.8, 6.2)).to.equal(10);
     });
   });
-  describe('DIVIDE', () => {
+  describe('DIVIDE', function() {
     it('should return rounded division for DIVIDE', function() {
         expect(calculateNumber('DIVIDE', 9.3, 2.7)).to.equal(3);
     });

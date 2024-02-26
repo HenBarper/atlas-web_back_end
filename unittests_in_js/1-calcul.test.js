@@ -1,19 +1,23 @@
 const calculateNumber = require('./1-calcul');
 const assert = require('assert');
 
-describe('calculateNumber', () => {
+describe('SUM', () => {
   it('should return rounded sum for SUM', () => {
     assert.strictEqual(calculateNumber('SUM', 6.2, 11.8), 18);
   });
   it('should return rounded sum for SUM', () => {
     assert.strictEqual(calculateNumber('SUM', -2.1, 22.4), 20);
   });
+});
+describe('SUBTRACT', () => {
   it('should return rounded difference for SUBTRACT', () => {
     assert.strictEqual(calculateNumber('SUBTRACT', 15.8, 6.2), 10);
   });
   it('should return rounded difference for SUBTRACT', () => {
     assert.strictEqual(calculateNumber('SUBTRACT', 5.1, -7.9), -3);
   });
+});
+describe('DIVIDE', () => {
   it('should return rounded division for DIVIDE', () => {
     assert.strictEqual(calculateNumber('DIVIDE', 9.3, 2.7), 3);
   });

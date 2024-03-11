@@ -7,12 +7,12 @@ const Utils = {
       case 'SUM':
         return firstNum + secondNum;
       case 'SUBTRACT':
-        return a - secondNum;
+        return firstNum - secondNum;
       case 'DIVIDE':
-        if (numB === 0) {
+        if (secondNum === 0) {
           return 'Error';
         }
-        return numA / numB;
+        return firstNum / secondNum;
       default:
         throw new Error('Unknown operation');
     }

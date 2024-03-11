@@ -10,9 +10,8 @@ describe('sendPaymentRequestToApi', function() {
   });
 
   it('two funcs should match', function() {
-    sinonSpy = sinon.spy('Utils', 'calculateNumber');
+    sinonSpy = sinon.spy(Utils, 'calculateNumber');
     sendPaymentRequestToApi(100, 20);
-    // expect(calculateNumberSpy.calledOnce).to.be.true;
-    expect(calculateNumberSpy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
+    expect(sinonSpy.calledOnceWithExactly('SUM', 100, 20)).to.be.true;
   });
 });
